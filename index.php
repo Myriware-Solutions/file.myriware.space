@@ -1,13 +1,18 @@
 <?php
 session_start();
 require_once './vendor/autoload.php';
+require_once './files.php';
 
 header('Access-Control-Allow-Origin: https://account.myriware.space');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
+    $r->get( '/session', '/session.php');
     $r->get( '/', '/landing.html');
+    $r->post( '/loginsys', '/loginsys.php');
+    $r->get( '/console', '/console.php');
+    $r->get( '/files', 'FILES');
 });
 
 // Fetch method and URI from somewhere
@@ -37,11 +42,18 @@ switch ($routeInfo[0]) {
         foreach (array_keys($vars) as $key) {
             $_GET[$key] = $vars[$key];
         }
-        if ($handler == "SESSION_INFO") {
-            header('Content-Type: application/json');
-            echo json_encode($_SESSION);
-        } else {
-            include ".$handler";
+        switch ($handler) {
+            case "FILES":
+                header('Content-Type: application/json');
+                if (!str_contains($_SESSION['asa'], '+#+&+^+-+$%[+#+[+[+@_(+$_&')) {
+                    echo json_encode(["status" => false, "data" => null]);
+                } else {
+                    echo json_encode(["status" => true, "data" => FileManager::GetFiles()]);
+                }
+                break;
+            default:
+                include ".$handler";
+            break;
         }
         break;
 }

@@ -1,3 +1,7 @@
 /vendor/
 composer.lock
 composer.phar
+vars.php
+.htaccess
+FILE_DIR/
+FILE_DIR
