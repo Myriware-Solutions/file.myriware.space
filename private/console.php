@@ -1,7 +1,7 @@
 <?php
 include_once "files.php";
 if (!str_contains($_SESSION['asa'], '+#+&+^+-+$%[+#+[+[+@_(+$_&')) {
-    include "./source/forbidden.html";
+    include "./public/forbidden.html";
 } else {
 ?>
 <!DOCTYPE html>
@@ -10,11 +10,11 @@ if (!str_contains($_SESSION['asa'], '+#+&+^+-+$%[+#+[+[+@_(+$_&')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myriware Source File Manager</title>
-    <script type="module" src="/source/console.js"></script>
-    <link rel="stylesheet" href="/source/console.css">
+    <script type="module" src="/private/console.js"></script>
+    <link rel="stylesheet" href="/private/console.css">
 </head>
 <?php
-    include "./source/console.html";
+    include "./private/console.html";
 ?>
 </html>
 <?php

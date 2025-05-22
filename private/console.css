@@ -61,6 +61,8 @@ html {
                 flex-direction: column;
             }
             span {
+                &.dir { color: lightblue }
+                &.spaced-file { color: lightsalmon }
                 &:hover {
                     background-color: grey;
                 }
