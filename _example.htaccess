@@ -5,7 +5,12 @@
 #
 #   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+Options -Indexes
+
 RewriteEngine On
+# Prohibets the user from accessing fiel structure dirrectly
+RewriteRule ^FILE_DIR(/.*)?$ - [F,L]
+# Reroutes all into the index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
