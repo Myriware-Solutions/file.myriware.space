@@ -35,7 +35,7 @@ if (!isset($_SESSION['muid'])) {
         <p>Account: <?php echo $_SESSION['username']; ?> [<?php echo $_SESSION['muid']; ?>]</p>
         <hr>
         <p class="big-text">Click the link below to download the requested Myriware File Asset.</p>
-        <a class="big-text" href="/FILE_DIR/<?php echo $_GET['link'] ?>" download>Download</a>
+        <a class="big-text" href="/dl/<?php echo $_GET['link'] ?>" download>Download</a>
     </div>
 </body>
 </html>

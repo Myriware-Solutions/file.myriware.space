@@ -55,7 +55,7 @@ class FileManager {
 
         return $result;
     }
-    private static function isPathSafe(string $path): bool {
+    public static function isPathSafe(string $path): bool {
         // Normalize slashes
         $normalized = str_replace('\\', '/', $path);
 

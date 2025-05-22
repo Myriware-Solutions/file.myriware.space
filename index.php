@@ -15,7 +15,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->get( '/files', 'FILES');
     $r->post( '/command_proc', '/consolehandler.php');
     $r->get( '/download/{link:.*}', '/public/download.php');
-    $r->get( '/dl', '/public/downloadhandler.php');
+    $r->get( '/dl/{file:.*}', '/public/downloadhandler.php');
 });
 
 // Fetch method and URI from somewhere

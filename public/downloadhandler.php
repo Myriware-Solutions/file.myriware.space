@@ -1,13 +1,22 @@
 <?php
-$baseDir = './FILE_DIR/';
+
+include_once "./files.php";
+
+if (!isset($_SESSION['muid'])) {
+    $h_redirect = (($_SERVER['SERVER_NAME']==='localhost')?"http":"https")."://".$_SERVER['SERVER_NAME'];
+    $signin_link = "https://account.myriware.space/login?host_redirect=$h_redirect&redirect=/download/".$_GET['file'];
+    header("Location: $signin_link");
+}
+
+$baseDir = './FILE_DIR';
 $file = $_GET['file'] ?? '';
 
-$realPath = realpath($baseDir . $file);
+$realPath = realpath("$baseDir/$file");
 
 // Ensure the file is within allowed base directory
-if (!$realPath || strpos($realPath, $baseDir) !== 0 || !file_exists($realPath)) {
+if (!$realPath || !file_exists($realPath) || !FileManager::isPathSafe($file)) {
     http_response_code(404);
-    echo "File not found or access denied: $realPath";
+    echo "File not found or access denied: $realPath ($file)";
     exit;
 }
 
