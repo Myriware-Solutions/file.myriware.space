@@ -33,6 +33,7 @@ if (!isset($_SESSION['muid'])) {
 <body>
     <div class="link-display">
         <p>Account: <?php echo $_SESSION['username']; ?> [<?php echo $_SESSION['muid']; ?>]</p>
+        <p>Requested Resource: <code>/<?php echo $_GET['link'] ?></code></p>
         <hr>
         <p class="big-text">Click the link below to download the requested Myriware File Asset.</p>
         <a class="big-text" href="/dl/<?php echo $_GET['link'] ?>" download>Download</a>
