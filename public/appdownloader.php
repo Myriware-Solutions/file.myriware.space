@@ -6,6 +6,11 @@ $APIKEYS = [
     "a3ebb543-7d84-48bf-a1fe-1b7e2106bdf9" // Ryft
 ];
 
+if (!in_array($_GET['apikey'], $APIKEYS)) {
+    echo "Invalid API key";
+    exit;
+}
+
 $baseDir = './FILE_DIR';
 $file = $_GET['file'] ?? '';
 
